@@ -1,11 +1,11 @@
 Summary:	Simple Elegant Image Viewer
 Name:		viewnior
-Version:	1.1
-Release:	2
+Version:	1.3
+Release:	1
 License:	GPLv3
 Group:		Graphics
 URL:		http://xsisqox.github.com/Viewnior/
-Source0:	http://cloud.github.com/downloads/xsisqox/Viewnior/%{name}-%{version}.tar.xz
+Source0:	http://cloud.github.com/downloads/xsisqox/Viewnior/%{name}-%{version}.tar.gz
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-icon-theme
@@ -37,7 +37,8 @@ Among its features are:
 
 %build
 %configure2_5x \
-	--enable-wallpaper
+	--enable-wallpaper \
+	--enable-shave
 
 %make LIBS='-lm'
 
