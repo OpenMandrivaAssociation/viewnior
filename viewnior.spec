@@ -64,3 +64,32 @@ find %{buildroot}%{_datadir}/icons/ -type f -print0 | xargs -0 chmod 0644
 %{_datadir}/icons/hicolor/*/apps/%{name}.svg
 %{_mandir}/man1/%{name}.1*
 
+
+
+%changelog
+* Thu May 24 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.3-1
++ Revision: 800418
+- new version 1.3
+
+* Wed Jan 25 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.1-2
++ Revision: 768164
+- imported package viewnior
+
+
+* Sat Dec 18 2010 KDulcimer <kdulcimer@unity-linux.org> 1.1-1
+- 1.1
+
+* Fri Apr 02 2010 KDulcimer <kdulcimer@unity-linux.org> 1.0-1
+- 1.0
+
+* Fri Nov 20 2009 KDulcimer <kdulcimer@unity-linux.org> 0.7-1
+- Import spec to Unity Linux
+
+* Sun Sep 06 2009 slick50 <lxgator@gmail.com> 0.7-1pclos2009
+- 0.7
+
+* Sun Aug 09 2009 slick50 <lxgator@gmail.com> 0.6-1pclos2009
+- 0.6
+
+* Fri Jun 26 2009 slick50 <lxgator@gmail.com> 0.5-1pclos2009
+- initial build
