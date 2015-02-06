@@ -1,7 +1,7 @@
 Summary:	Simple Elegant Image Viewer
 Name:		viewnior
 Version:	1.3
-Release:	1
+Release:	2
 License:	GPLv3
 Group:		Graphics
 URL:		http://xsisqox.github.com/Viewnior/
