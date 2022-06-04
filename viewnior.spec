@@ -56,7 +56,7 @@ find %{buildroot}%{_datadir}/icons/ -type f -print0 | xargs -0 chmod 0644
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog* COPYING README
+%doc AUTHORS COPYING README*
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
