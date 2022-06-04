@@ -7,6 +7,7 @@ Group:		Graphics
 URL:		http://xsisqox.github.com/Viewnior/
 Source0:	https://github.com/hellosiyan/Viewnior/archive/refs/tags/Viewnior-viewnior-%{version}.tar.gz
 
+BuildRequires:	meson
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-icon-theme
 BuildRequires:	intltool
@@ -36,14 +37,12 @@ Among its features are:
 %autosetup -n Viewnior-%{name}-%{version}
 
 %build
-%configure \
-	--enable-wallpaper \
-	--enable-shave
+%meson
 
-%make_build LIBS='-lm'
+%meson_build
 
 %install
-%make_install
+%meson_install
 desktop-file-install --vendor="" \
 	--add-category="X-MandrivaLinux-Multimedia-Graphics" \
 	--dir=%{buildroot}%{_datadir}/applications \
