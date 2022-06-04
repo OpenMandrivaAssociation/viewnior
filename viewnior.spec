@@ -16,6 +16,7 @@ BuildRequires:	shared-mime-info
 BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(exiv2)
 
 Requires:	gnome-icon-theme >= 2.19.1
 Requires:	shared-mime-info >= 0.20
