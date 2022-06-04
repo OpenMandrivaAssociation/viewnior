@@ -1,11 +1,11 @@
 Summary:	Simple Elegant Image Viewer
 Name:		viewnior
-Version:	1.3
-Release:	2
+Version:	1.8
+Release:	1
 License:	GPLv3
 Group:		Graphics
 URL:		http://xsisqox.github.com/Viewnior/
-Source0:	http://cloud.github.com/downloads/xsisqox/Viewnior/%{name}-%{version}.tar.gz
+Source0:	https://github.com/hellosiyan/Viewnior/archive/refs/tags/Viewnior-viewnior-%{version}.tar.gz
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-icon-theme
@@ -33,17 +33,17 @@ Among its features are:
 * Simple interface
 
 %prep
-%setup -q
+%autosetup -n Viewnior-%{name}-%{version}
 
 %build
-%configure2_5x \
+%configure \
 	--enable-wallpaper \
 	--enable-shave
 
-%make LIBS='-lm'
+%make_build LIBS='-lm'
 
 %install
-%makeinstall_std
+%make_install
 desktop-file-install --vendor="" \
 	--add-category="X-MandrivaLinux-Multimedia-Graphics" \
 	--dir=%{buildroot}%{_datadir}/applications \
