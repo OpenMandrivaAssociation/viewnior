@@ -35,7 +35,7 @@ Among its features are:
 * Simple interface
 
 %prep
-%autosetup -n Viewnior-%{name}-%{version}
+%autosetup -n Viewnior-%{name}-%{version} -p1
 
 %build
 %meson
@@ -62,6 +62,7 @@ find %{buildroot}%{_datadir}/icons/ -type f -print0 | xargs -0 chmod 0644
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/*/apps/%{name}.svg
+%{_datadir}/metainfo/viewnior.metainfo.xml
 %{_mandir}/man1/%{name}.1*
 
 
