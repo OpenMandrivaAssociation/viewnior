@@ -1,12 +1,13 @@
 Summary:	Simple Elegant Image Viewer
 Name:		viewnior
-Version:	1.3
-Release:	2
+Version:	1.8
+Release:	1
 License:	GPLv3
 Group:		Graphics
 URL:		http://xsisqox.github.com/Viewnior/
-Source0:	http://cloud.github.com/downloads/xsisqox/Viewnior/%{name}-%{version}.tar.gz
+Source0:	https://github.com/hellosiyan/Viewnior/archive/refs/tags/Viewnior-viewnior-%{version}.tar.gz
 
+BuildRequires:	meson
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-icon-theme
 BuildRequires:	intltool
@@ -15,6 +16,7 @@ BuildRequires:	shared-mime-info
 BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(exiv2)
 
 Requires:	gnome-icon-theme >= 2.19.1
 Requires:	shared-mime-info >= 0.20
@@ -33,17 +35,15 @@ Among its features are:
 * Simple interface
 
 %prep
-%setup -q
+%autosetup -n Viewnior-%{name}-%{version} -p1
 
 %build
-%configure2_5x \
-	--enable-wallpaper \
-	--enable-shave
+%meson
 
-%make LIBS='-lm'
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 desktop-file-install --vendor="" \
 	--add-category="X-MandrivaLinux-Multimedia-Graphics" \
 	--dir=%{buildroot}%{_datadir}/applications \
@@ -56,12 +56,13 @@ find %{buildroot}%{_datadir}/icons/ -type f -print0 | xargs -0 chmod 0644
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog* COPYING README
+%doc AUTHORS COPYING README*
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/*/apps/%{name}.svg
+%{_datadir}/metainfo/viewnior.metainfo.xml
 %{_mandir}/man1/%{name}.1*
 
 
