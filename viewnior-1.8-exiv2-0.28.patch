@@ -1,0 +1,57 @@
+diff -up Viewnior-viewnior-1.8/src/uni-exiv2.cpp.omv~ Viewnior-viewnior-1.8/src/uni-exiv2.cpp
+--- Viewnior-viewnior-1.8/src/uni-exiv2.cpp.omv~	2023-05-18 04:44:56.138126687 +0200
++++ Viewnior-viewnior-1.8/src/uni-exiv2.cpp	2023-05-18 04:45:08.754247743 +0200
+@@ -27,7 +27,7 @@
+ 
+ #define ARRAY_SIZE(array) (sizeof array/sizeof(array[0]))
+ 
+-static Exiv2::Image::AutoPtr cached_image;
++static Exiv2::Image::UniquePtr cached_image;
+ 
+ extern "C"
+ void
+@@ -35,7 +35,7 @@ uni_read_exiv2_map(const char *uri, void
+ {
+     Exiv2::LogMsg::setLevel(Exiv2::LogMsg::mute);
+     try {
+-        Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(uri);
++        Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(uri);
+         if ( image.get() == 0 ) {
+             return;
+         }
+@@ -80,7 +80,7 @@ uni_read_exiv2_map(const char *uri, void
+                 }
+             }
+         }
+-    } catch (Exiv2::AnyError& e) {
++    } catch (Exiv2::Error& e) {
+         std::cerr << "Exiv2: '" << e << "'\n";
+     }
+ }
+@@ -103,7 +103,7 @@ uni_read_exiv2_to_cache(const char *uri)
+         }
+ 
+         cached_image->readMetadata();
+-    } catch (Exiv2::AnyError& e) {
++    } catch (Exiv2::Error& e) {
+         std::cerr << "Exiv2: '" << e << "'\n";
+     }
+ 
+@@ -121,7 +121,7 @@ uni_write_exiv2_from_cache(const char *u
+     }
+ 
+     try {
+-        Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(uri);
++        Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(uri);
+         if ( image.get() == 0 ) {
+             return 2;
+         }
+@@ -133,7 +133,7 @@ uni_write_exiv2_from_cache(const char *u
+         cached_image.reset(NULL);
+ 
+         return 0;
+-    } catch (Exiv2::AnyError& e) {
++    } catch (Exiv2::Error& e) {
+         std::cerr << "Exiv2: '" << e << "'\n";
+     }
+ 
