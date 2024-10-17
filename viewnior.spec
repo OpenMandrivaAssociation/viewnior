@@ -4,7 +4,7 @@ Version:	1.8
 Release:	2
 License:	GPLv3
 Group:		Graphics
-URL:		http://xsisqox.github.com/Viewnior/
+URL:		https://xsisqox.github.com/Viewnior/
 Source0:	https://github.com/hellosiyan/Viewnior/archive/refs/tags/Viewnior-viewnior-%{version}.tar.gz
 Patch0:		viewnior-1.8-exiv2-0.28.patch
 
